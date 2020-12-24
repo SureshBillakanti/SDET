@@ -24,8 +24,8 @@ public class Activity10 {
         driver.get("https://www.training-support.net/selenium/sliders");
     }
 
-    @Test
-    public void sliderToMiddleTest() {
+    @Test(priority=1)
+    public void sliderToMiddleTest() throws InterruptedException {
         //Find slider
         WebElement slider = driver.findElement(By.id("slider"));
         //Clicking on the slider element moves it to the middle
@@ -35,58 +35,63 @@ public class Activity10 {
         Reporter.log("Mid value: " + volumeLevel);
         
         Assert.assertEquals(volumeLevel, "50");
+        Thread.sleep(5000);
     }
     
-    @Test
-    public void sliderToMaxTest() {
+    @Test(priority=2)
+    public void sliderToMaxTest() throws InterruptedException {
         //Find slider
         WebElement slider = driver.findElement(By.id("slider"));
         //Drag the slider
-        builder.clickAndHold(slider).moveByOffset(75, 0).release().build().perform();
+        builder.clickAndHold(slider).moveByOffset(80, 0).release().build().perform();
         
         String volumeLevel = driver.findElement(By.cssSelector("span#value")).getText();
         Reporter.log("Max value: " + volumeLevel);
         
         Assert.assertEquals(volumeLevel, "100");
+        Thread.sleep(5000);
     }
     
-    @Test
-    public void sliderToMinTest() {
+    @Test(priority=3)
+    public void sliderToMinTest() throws InterruptedException {
         //Find slider
         WebElement slider = driver.findElement(By.id("slider"));
         //Drag the slider
-        builder.clickAndHold(slider).moveByOffset(-75, 0).release().build().perform();
+        builder.clickAndHold(slider).moveByOffset(-80, 0).release().build().perform();
         
         String volumeLevel = driver.findElement(By.cssSelector("span#value")).getText();
         Reporter.log("Min value: " + volumeLevel);
         
         Assert.assertEquals(volumeLevel, "0");
+        Thread.sleep(5000);
     }
     
-    @Test
-    public void sliderTo30Test() {
+    @Test(priority=4)
+    public void sliderTo30Test() throws InterruptedException {
         //Find slider
         WebElement slider = driver.findElement(By.id("slider"));
         //Drag the slider
-        builder.clickAndHold(slider).moveByOffset(-30, 0).release().build().perform();
+        builder.clickAndHold(slider).moveByOffset(-29, 0).release().build().perform();
         
         String volumeLevel = driver.findElement(By.cssSelector("span#value")).getText();
         Reporter.log("Min value: " + volumeLevel);
         
         Assert.assertEquals(volumeLevel, "30");
+        Thread.sleep(5000);
     }
     
-    @Test
-    public void sliderTo80Test() {
+    @Test(priority=5)
+    public void sliderTo80Test() throws InterruptedException {
         //Find slider
         WebElement slider = driver.findElement(By.id("slider"));
         //Drag the slider
-        builder.clickAndHold(slider).moveByOffset(45, 0).release().build().perform();
+        builder.clickAndHold(slider).moveByOffset(48, 0).release().build().perform();
         
         String volumeLevel = driver.findElement(By.cssSelector("span#value")).getText();
         Reporter.log("Min value: " + volumeLevel);
         
         Assert.assertEquals(volumeLevel, "80");
+        Thread.sleep(5000);
     }
 
     @AfterClass
